@@ -4,14 +4,38 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+/**
+ * Clase principal del caso. Responsable de leer los parametros en archivo configuracion
+ * @author d.galindo
+ *
+ */
 public class Main {
 
+	/**
+	 * Ruta del archivo de configuracion
+	 */
 	private final static String RUTA_CONFIG = "config.txt";
+	/**
+	 * Numero de mensajes que cada cliente debe enviar
+	 */
 	private static int numMensajes;
+	/**
+	 * Numero de clientes a crear
+	 */
 	private static int numClientes;
+	/**
+	 * Numero de servidores a crear
+	 */
 	private static int numServidores;
+	/**
+	 * Tamaño del buffer (cuantos mensajes puede leer maximo)
+	 */
 	private static int tamBuffer;
 
+	/**
+	 * Main de la app, lee el archivo config y crea los servidores, clientes y buffer
+	 * @param args
+	 */
 	public static void main(String[] args){
 
 		try {
@@ -43,6 +67,8 @@ public class Main {
 				System.out.println("Numero de servidores " + numServidores);
 				System.out.println("Tamanio buffer " + tamBuffer);
 				
+				
+				//for(int j=0;)
 				
 			}
 			catch(Exception e){
