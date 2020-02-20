@@ -1,0 +1,4 @@
+numMensajes=1
+numClientes=1
+numServidores=1
+tamBuffer=2
