@@ -67,4 +67,11 @@ public class Buffer {
 	public void clienteSalir(){
 		this.numClientes--;
 	}
+	
+	/**
+	 * @return da el numero de clientes
+	 */
+	public int darClientes(){
+		return this.numClientes;
+	}
 }
