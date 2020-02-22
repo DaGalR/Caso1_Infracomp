@@ -44,7 +44,7 @@ public class Mensaje {
 	 * Suma 1 al valor del mensaje y lo guarda en ValorFinal
 	 */
 	public void setValorFinal(){
-		valorFinal = valorInicial++;
+		valorFinal = ++valorInicial;
 	}
 	/**
 	 * @return el id del mensaje

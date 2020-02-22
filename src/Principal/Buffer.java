@@ -21,9 +21,10 @@ public class Buffer {
 	 * Metodo constructor del buffer
 	 * @param pTamBuffer tamaño del buffer
 	 */
-	public Buffer(int pTamBuffer){
+	public Buffer(int pTamBuffer, int pNumCientes){
 		this.tamBuffer = pTamBuffer;
 		this.mensajes = new ArrayList<>();
+		this.numClientes= pNumCientes;
 	}
 
 	/**
@@ -32,9 +33,12 @@ public class Buffer {
 	 * @return Retorna false si no puede agregar el mensaje, true de lo contrario
 	 */
 	public boolean guardarMensaje(Mensaje pMsj){
+		
 		synchronized(this){
+			
 			if(mensajes.size() == tamBuffer){
 				return false;
+				
 			}
 			else{
 
@@ -46,11 +50,14 @@ public class Buffer {
 	}
 	
 	/**
-	 * Metodo que verifica si el servidor no tiene mensajes por atender
-	 * @return true si no hay mensajes, false de lo contrario
+	 * Metodo que verifica si el servidor tiene mensajes por atender
+	 * @return true si no hay mensajes para atender, false de lo contrario
 	 */
 	public boolean vacio(){
+		synchronized (this) 
+		{
 		return mensajes.isEmpty();
+		}
 	}
 	
 	/**
@@ -58,6 +65,7 @@ public class Buffer {
 	 * @return Mensaje de los que envió algun cliente
 	 */
 	public Mensaje retirarMensaje(){
+		
 		return mensajes.remove(mensajes.size() - 1);
 	}
 	
