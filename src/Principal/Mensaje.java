@@ -25,7 +25,7 @@ public class Mensaje {
 		this.id = pId;
 		Random r = new Random();
 		valorInicial = r.nextInt(10000);
-		System.out.println("Valor inicial del mensaje es " + valorInicial);
+		System.out.println("Valor inicial del mensaje con id " + id + " es " + valorInicial);
 	}
 	
 	/**

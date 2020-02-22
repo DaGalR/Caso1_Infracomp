@@ -33,11 +33,9 @@ public class Cliente extends Thread {
 	public void run()
 	{
 		for(int j = 0; j<consultas;j++){
-			
-			
-			System.out.println("Cliente: " + id);
+
 			Mensaje mensj = new Mensaje(id);
-			id++;
+			
 			while(buffer.guardarMensaje(mensj) == false){
 				
 				yield();
@@ -47,7 +45,7 @@ public class Cliente extends Thread {
 				
 				try{
 					
-					System.out.println("Esperando respuesta del servidor");
+					System.out.println("Mensaje con id " + id +" esperando respuesta del servidor");
 					mensj.wait();
 					
 				}
@@ -56,6 +54,7 @@ public class Cliente extends Thread {
 				}
 
 			}
+			id++;
 		}
 		buffer.clienteSalir();
 	}

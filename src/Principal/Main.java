@@ -114,7 +114,6 @@ public class Main {
 					servidores[j]=new Servidor(buff);
 					servidores[j].start();
 				}
-
 				
 
 			}
