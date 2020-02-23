@@ -49,7 +49,7 @@ public class Servidor extends Thread {
 			}
 			synchronized(msj){
 
-				System.out.println("SERVIDOR "+id+": resivió " +msj.getId() + " con valor inical " + msj.getValorInicial());
+				System.out.println("SERVIDOR "+id+": recibió " +msj.getId() + " con valor inical " + msj.getValorInicial());
 				msj.setValorFinal();
 				msj.notify();
 				System.out.println("SERVIDOR "+id+": respondió "  + msj.getId()+ " con valor final " + msj.getValorFinal());
