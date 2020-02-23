@@ -28,21 +28,27 @@ public class Cliente extends Thread {
 	}
 
 	/**
-	 * Metodo principal del cliente
+	 * Metodo principal del cliente.  Indica lo que debe hacer el Thread Cliente una vez inicie.
 	 */
-	public void run(){
+	public void run()
+	{
 		for(int j = 0; j<consultas;j++){
 
-			Mensaje mensj = new Mensaje(id);
-			id++;
+			String ident ="C"+id+" M"+j;
+			Mensaje mensj = new Mensaje(ident);
+			
 			while(buffer.guardarMensaje(mensj) == false){
+				
 				yield();
 			}
 
 			synchronized(mensj){
+				
 				try{
+					
+					System.out.println("MENSAJE " + ident +": esperando respuesta del servidor");
 					mensj.wait();
-					System.out.println("Esperando respuesta del servidor");
+					
 				}
 				catch(InterruptedException i){
 					i.printStackTrace();
