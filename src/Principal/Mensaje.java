@@ -15,17 +15,17 @@ public class Mensaje {
 	/**
 	 * Id del mensaje
 	 */
-	private int id;
+	private String id;
 	
 	/**
 	 * Constructor de la clase mensaje
 	 * @param pId id del mensaje
 	 */
-	public Mensaje(int pId){
-		this.id = pId;
+	public Mensaje(String pId){
+		this.id =pId;
 		Random r = new Random();
 		valorInicial = r.nextInt(10000);
-		System.out.println("Valor inicial del mensaje con id " + id + " es " + valorInicial);
+		System.out.println("MENSAJE " + id +": valor inicial: " +valorInicial);
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class Mensaje {
 	/**
 	 * @return el id del mensaje
 	 */
-	public int getId(){
+	public String getId(){
 		return this.id;
 	}
 }

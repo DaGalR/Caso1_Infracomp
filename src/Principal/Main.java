@@ -34,6 +34,12 @@ public class Main {
 	 * Tamaño del buffer (cuantos mensajes puede leer maximo)
 	 */
 	private static int tamBuffer;
+	
+	/**
+	 * Buffer se la aplicación
+	 */
+	
+	private static Buffer buff;
 
 	/**
 	 * Lsita cono los mensajes que debe mandar cada cliente
@@ -94,13 +100,18 @@ public class Main {
 
 					linea = bf.readLine();
 				}
+				
+				System.out.println("*************************************************");
+				System.out.println("                      INICIO                     ");
+				System.out.println("*************************************************");
 				System.out.println("Numero de mensaje por cliente " + numMensajes);
 				System.out.println("Numero de clientes " + numClientes);
 				System.out.println("Numero de servidores " + numServidores);
 				System.out.println("Tamaño buffer " + tamBuffer);
+				System.out.println("*************************************************");
 
 
-				Buffer buff = new Buffer(tamBuffer, numClientes);
+				buff = new Buffer(tamBuffer, numClientes);
 
 				//Creación de los clintes
 				for(int j=0; j<numClientes;j++)
@@ -111,7 +122,7 @@ public class Main {
 
 				for(int j=0; j<numServidores;j++)
 				{
-					servidores[j]=new Servidor(buff);
+					servidores[j]=new Servidor(buff,j);
 					servidores[j].start();
 				}
 				
@@ -122,7 +133,17 @@ public class Main {
 			}
 
 
-
+			for(Servidor k: servidores)
+			{
+				try {
+					k.join();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			System.out.println("FINAL: número de mensajes antendidos "+ buff.darMsjsAntendidos());
 
 
 

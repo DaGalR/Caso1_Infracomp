@@ -34,7 +34,8 @@ public class Cliente extends Thread {
 	{
 		for(int j = 0; j<consultas;j++){
 
-			Mensaje mensj = new Mensaje(id);
+			String ident ="C"+id+" M"+j;
+			Mensaje mensj = new Mensaje(ident);
 			
 			while(buffer.guardarMensaje(mensj) == false){
 				
@@ -45,7 +46,7 @@ public class Cliente extends Thread {
 				
 				try{
 					
-					System.out.println("Mensaje con id " + id +" esperando respuesta del servidor");
+					System.out.println("MENSAJE " + ident +": esperando respuesta del servidor");
 					mensj.wait();
 					
 				}
@@ -54,7 +55,6 @@ public class Cliente extends Thread {
 				}
 
 			}
-			id++;
 		}
 		buffer.clienteSalir();
 	}
